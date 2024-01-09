@@ -47,9 +47,7 @@ export class AppComponent implements OnInit {
     console.log(this.messageBody);
     const mailtoLink = `mailto:fekihmeriam1993@gmail.com?subject=${encodeURIComponent(
       this.messageBody.subject
-    )}&body=${encodeURIComponent(
-      `Name: ${this.messageBody.name}%0AEmail: ${this.messageBody.email}%0ASubject: ${this.messageBody.subject}%0AMessage: ${this.messageBody.message}`
-    )}`;
+    )}&body=${encodeURIComponent(this.messageBody.message)}`;
     window.location.href = mailtoLink;
   }
   scrollToView() {
