@@ -148,28 +148,36 @@
         </div>
       </div>
       <div class="grid-container">
-        <form
-          action="mailto:fekihmeriam1993@gmail.com"
-          method="post"
-          enctype="text/plain"
-        >
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
           <div class="form-group">
             <input
               type="text"
               id="name"
-              name="name"
+              name="nameInput"
               class="form-control"
+              [(ngModel)]="messageBody.name"
+              [placeholder]="placeholder"
+              #nameInput="ngModel"
               required
             />
+            <div *ngIf="f.submitted && nameInput.invalid" class="invalid-msg">
+              this field is required
+            </div>
           </div>
           <div class="form-group">
             <input
               type="text"
               id="email"
-              name="email"
+              name="emailInput"
               class="form-control"
+              [(ngModel)]="messageBody.email"
+              #emailInput="ngModel"
+              [placeholder]="placeholderEmail"
               required
             />
+            <div *ngIf="f.submitted && emailInput.invalid" class="invalid-msg">
+              this field is required
+            </div>
           </div>
           <div class="form-group">
             <label for="subject"></label>
@@ -178,8 +186,14 @@
               id="subject"
               class="form-control"
               name="subject"
+              [placeholder]="placeholderSubject"
+              #subject="ngModel"
+              [(ngModel)]="messageBody.subject"
               required
             />
+            <div *ngIf="f.submitted && subject.invalid" class="invalid-msg">
+              this field is required
+            </div>
           </div>
           <div class="form-group">
             <label for="message"></label>
@@ -187,10 +201,17 @@
               id="message"
               rows="5"
               class="form-control"
+              [(ngModel)]="messageBody.message"
               name="message"
+              #message="ngModel"
+              [placeholder]="placeholderMessage"
               required
             ></textarea>
+            <div *ngIf="f.submitted && message.invalid" class="invalid-msg">
+              this field is required
+            </div>
           </div>
+
           <div class="form-group submit-btn">
             <button class="btn btn-success" type="submit">Send</button>
           </div>

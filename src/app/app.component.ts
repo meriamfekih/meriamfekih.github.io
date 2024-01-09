@@ -19,6 +19,16 @@ export class AppComponent implements OnInit {
   placeholderSubject = "your subject";
   placeholderMessage = "write your message here";
   placeholderEmail = "your e-mail";
+  nameInput: string;
+  emailInput: string;
+  subject: string;
+  message: string;
+  messageBody = {
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  };
 
   ngOnInit(): void {
     new Typed("#typed", {
@@ -31,6 +41,16 @@ export class AppComponent implements OnInit {
     this.tools = document.querySelector(".tools");
     this.contact = document.querySelector(".contact-section");
     this.topSection = document.querySelector(".intro");
+  }
+
+  onSubmit(f) {
+    console.log(this.messageBody);
+    const mailtoLink = `mailto:fekihmeriam1993@gmail.com?subject=${encodeURIComponent(
+      this.messageBody.subject
+    )}&body=${encodeURIComponent(
+      `Name: ${this.messageBody.name}%0AEmail: ${this.messageBody.email}%0ASubject: ${this.messageBody.subject}%0AMessage: ${this.messageBody.message}`
+    )}`;
+    window.location.href = mailtoLink;
   }
   scrollToView() {
     document.querySelector(".projects").scrollIntoView({ behavior: "smooth" });
