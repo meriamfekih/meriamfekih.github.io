@@ -1,0 +1,159 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="wrapper">
+    <app-menu [portfolioSection]="portfolio"
+              [aboutSection]="about"
+              [contactSection]="contact"
+              [toolsSection]="tools"
+              [topSection]="topSection"
+
+    ></app-menu>
+    <section class="intro" [ngClass]="transit? 'transition-on':''">
+        <h1 id="show">Hello <br>world<span>!</span></h1>
+        <div class="overlay"></div>
+        <div class="scroll-down" (click)="scrollToView()">
+            <div class="chevron"></div>
+            <div class="chevron"></div>
+            <div class="chevron"></div>
+        </div>
+        <div class="overlay-cliped"></div>
+
+        <div class="container">
+            <div class="introduction">
+                <div class="text">My name is Meriam,</div>
+                <div class="function">I'm a <br>
+                    <div id="typed-strings">
+                        <p>Front End</p>
+                        <p>Creative UI</p>
+                        <p>Passionate</p>
+                    </div>
+                    <span id="typed"></span>
+                    <br>developer
+                </div>
+                <div class="contact">Visit my <a href="https://www.linkedin.com/in/meriam-fekih-73a95b143/">LinkedIn</a> profile for more details .</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="main">
+
+        <app-portfolio></app-portfolio>
+
+        <section class="container skills">
+            <div class="title">
+                <div class="background-title">About me</div>
+                <div class="small-title" data-0="background-color:rgb(0,0,255);" data-500="background-color:rgb(255,0,0);">My experience in Front-end developement</div>
+            </div>
+            <div class="grid-container">
+                <div class="paragraph details">
+                    I am a web developer with 3 years of experience, passionate about developing and creating interactive websites.<br>
+                    I implement web designs through coding languages like HTML, CSS, Sass, jQuery, Bootstrap,
+                    and now building my portfolio with angular 9.<br>
+                    I have also experience with open source CMS like wordpress.
+                    I use different tools like Photoshop, PhpStorm, zeplin and Git versionning system.
+                    I enjoy working in a team and injecting positive energy.
+                </div>
+                <div id="pyramid"><div></div><div></div><div></div><div></div></div>
+            </div>
+        </section>
+
+        <section class="container tools">
+            <div class="title">
+                <div class="background-title">My skills</div>
+                <div class="small-title" data-0="background-color:rgb(0,0,255);" data-500="background-color:rgb(255,0,0);">Skills & experience</div>
+            </div>
+            <div class="grid-container">
+                <div class="item">
+                    <img src="../assets/images/skills/html.png" alt="html logo">
+                    <span>HTML</span>
+                </div>
+                <div class="item">
+                    <img src="../assets/images/skills/css.png" alt="css logo">
+                    <span>Css</span>
+                </div>
+                <div class="item">
+                    <img src="../assets/images/skills/js.png" alt="js logo">
+                    <span>Js</span>
+                </div>
+                <div class="item">
+                    <img src="../assets/images/skills/angular.png" alt="angular logo">
+                    <span>Angular</span>
+                </div>
+                <div class="item">
+                    <img src="../assets/images/skills/sass.png" alt="sass logo">
+                    <span>Sass</span>
+                </div>
+                <div class="item">
+                    <img src="../assets/images/skills/bootstrap.png" alt="bootstrap logo">
+                    <span>Bootstrap</span>
+                </div>
+                <div class="item">
+                    <img src="../assets/images/skills/Phpstorm.png" alt="Phpstorm logo">
+                    <span>Phpstorm</span>
+                </div>
+                <div class="item">
+                    <img src="../assets/images/skills/ps.png" alt="photoshop logo">
+                    <span>Photoshop</span>
+                </div>
+                <div class="item">
+                    <img src="../assets/images/skills/zeplin.png" alt="zeplin logo">
+                    <span>Zeplin</span>
+                </div>
+                <div class="item">
+                    <img src="../assets/images/skills/jira.png" alt="jira logo">
+                    <span>Jira</span>
+                </div>
+                <div class="item">
+                    <img src="../assets/images/skills/git.png" alt="git logo">
+                    <span>Git</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="container contact contact-section">
+            <div class="title">
+                <div class="background-title">Contact</div>
+                <div class="small-title" data-0="background-color:rgb(0,0,255);" data-500="background-color:rgb(255,0,0);">Have a question?</div>
+            </div>
+            <div class="grid-container">
+                <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                    <div class="form-group">
+                        <input type="text" id="name" name="nameInput" class="form-control" [(ngModel)]="messageBody.name" [placeholder]="placeholder" #nameInput="ngModel" required>
+                        <div *ngIf="f.submitted && nameInput.invalid" class="invalid-msg">this field is required</div>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="email" name="emailInput" class="form-control" [(ngModel)]="messageBody.email" #emailInput="ngModel" [placeholder]="placeholderEmail" required>
+                        <div *ngIf="f.submitted && emailInput.invalid" class="invalid-msg">this field is required</div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="subject"></label>
+                        <input type="text" id="subject" class="form-control" name="subject" [placeholder]="placeholderSubject" #subject="ngModel"  [(ngModel)]="messageBody.subject" required>
+                        <div *ngIf="f.submitted && subject.invalid" class="invalid-msg">this field is required</div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="message"></label>
+                        <textarea id="message" rows="5" class="form-control" [(ngModel)]="messageBody.message" name="message" #message="ngModel" [placeholder]="placeholderMessage" required></textarea>
+                        <div *ngIf="f.submitted && message.invalid" class="invalid-msg">this field is required</div>
+
+                    </div>
+
+                    <div class="form-group submit-btn">
+                        <button class="btn btn-success" type="submit">Send</button>
+
+                    </div>
+
+                </form>
+            </div>
+        </section>
+    </div>
+
+
+
+    <router-outlet></router-outlet>
+    <div id="cursor" class="Cursor">
+    </div>
+    <app-footer></app-footer>
+</div>
+

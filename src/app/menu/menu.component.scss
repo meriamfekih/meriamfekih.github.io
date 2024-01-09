@@ -1,0 +1,46 @@
+.nav-bar{
+  position: fixed;
+  z-index: 3;
+  background-color: #ffffff;
+  left: 0;
+  bottom: 0;
+  top: 0;
+
+  nav{
+    margin-top: 100px;
+    a{
+      display: block;
+      img{
+        max-width: 25px;
+        padding: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 770px) {
+  .nav-bar{
+    top: unset;
+    bottom: unset;
+    right: 0;
+
+    nav {
+      margin-top: 0;
+      float: right;
+      margin-right: 20px;
+      a{
+        display: inline-block;
+      }
+    }
+  }
+}
+@media (max-width: 640px) {
+  .nav-bar{
+    nav {
+      margin-right: 10px;
+      img{
+        max-width: 21px!important;
+      }
+    }
+  }
+}
